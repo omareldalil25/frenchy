@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starting Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background: #FE669A;
+            background: -webkit-linear-gradient(to right, #03346E, #FE669A);
+            background: linear-gradient(to right, #03346E, #FE669A);
+        }
+
+        .navbar {
+            background-color: #ffffff;
+        }
+
+        .navbar-brand {
+            padding-left: 20px;
+        }
+
+        .navbar-nav {
+            margin-left: auto;
+            padding-right: 50px;
+        }
+
+        .navbar-brand img {
+            height: 60px;
+        }
+
+        .nav-link {
+            font-size: 16px;
+            color: #000;
+        }
+
+        .nav-link i {
+            margin-right: 5px;
+        }
+
+        @media (max-width: 767px) {
+            .navbar-nav {
+                text-align: center;
+                padding-right: 0;
+            }
+        }
+
+        /* Box styles */
+        .grade-box-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .grade-box-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0 20px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .grade-box {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            margin: 40px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .grade-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .grade-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .grade-box .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .grade-box:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay button {
+            background-color: #ffffff;
+            color: #FE669A;
+            border: 2px solid #FE669A;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            text-align: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .overlay button:hover {
+            background-color: #FE669A;
+            color: #ffffff;
+        }
+
+        .overlay button i {
+            margin-right: 8px;
+        }
+
+        @media (max-width: 767px) {
+            .grade-box {
+                width: 90%;
+                margin: 10px auto;
+            }
+        }
+
+        /* WhatsApp Icon */
+        .whatsapp-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-icon i {
+            font-size: 30px;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">
+            <img src="../login/css/logo 2.png" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../login/login.html">
+                        <i class="fas fa-user"></i> Login
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../New Subscription/New Subscription.html">
+                        <i class="fas fa-credit-card"></i> New Subscription
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Grade Boxes -->
+    <div class="grade-box-container">
+        <div class="grade-box-row">
+            <div class="grade-box">
+                <img src="../images/1.jpg" alt="First Secondary Grade">
+                <div class="overlay">
+                    <button onclick="window.location.href='../login/login.html';">
+                        <i class="fas fa-sign-in-alt"></i> Log in to start
+                    </button>
+                    <button onclick="window.location.href='';">
+                        <i class="fas fa-video"></i> Watch Demo
+                    </button>
+                </div>
+            </div>
+            <div class="grade-box">
+                <img src="../images/2.jpg" alt="Second Secondary Grade">
+                <div class="overlay">
+                    <button onclick="window.location.href='../login/login.html';">
+                        <i class="fas fa-sign-in-alt"></i> Log in to start
+                    </button>
+                    <button onclick="window.location.href='';">
+                        <i class="fas fa-video"></i> Watch Demo
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="grade-box-row">
+            <div class="grade-box">
+                <img src="../images/3.jpg" alt="Third Secondary Grade">
+                <div class="overlay">
+                    <button onclick="window.location.href='../login/login.html';">
+                        <i class="fas fa-sign-in-alt"></i> Log in to start
+                    </button>
+                    <button onclick="window.location.href='';">
+                        <i class="fas fa-video"></i> Watch Demo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Icon -->
+    <div class="whatsapp-icon" onclick="location.href='https://wa.me/201062039393';">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

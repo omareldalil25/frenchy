@@ -1,0 +1,95 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #FE669A;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #03346E, #FE669A);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #03346E, #FE669A);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    margin: 0;
+    flex-direction: column;
+    padding: 0 20px;
+    /* إضافة padding لتجنب تجاوز الحدود */
+}
+
+#logo-container {
+    text-align: center;
+    position: relative;
+}
+
+@keyframes drop {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#logo-img {
+    width: 250px;
+    /* زيادة حجم الشعار */
+    height: auto;
+    position: relative;
+    top: 20px;
+    animation: drop 1s ease-out;
+    /* تطبيق تأثير السقوط */
+}
+
+#typing-text {
+    font-size: 1.2rem;
+    margin-top: 0;
+    /* إزالة المسافة العلوية */
+    font-family: 'Baloo Bhaijaan', cursive;
+    /* تطبيق الخط الجديد */
+    color: #03346E;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid;
+    animation: caret 0.75s steps(1) infinite;
+    max-width: 100%;
+    text-align: center;
+    letter-spacing: 0.5px;
+    /* إضافة مسافة بين الحروف */
+}
+
+@keyframes caret {
+    50% {
+        border-color: transparent;
+    }
+}
+
+#skip-btn {
+    position: fixed;
+    /* التأكد من أن الزر ثابت بالنسبة للنافذة */
+    top: 20px;
+    right: 20px;
+    background-color: white;
+    /* لون الخلفية */
+    border: none;
+    border-radius: 50%;
+    /* جعل الزر دائري */
+    padding: 10px;
+    /* مساحة حول الأيقونة */
+    cursor: pointer;
+    z-index: 9999;
+    /* التأكد من ظهور الزر فوق العناصر الأخرى */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
+    /* إضافة انتقال سلس للموضع */
+}
+
+#skip-btn i {
+    font-size: 20px;
+    /* حجم الأيقونة */
+    color: #FE669A;
+    /* لون الأيقونة */
+}

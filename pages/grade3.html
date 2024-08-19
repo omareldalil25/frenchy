@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Third Secondary Grade</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            background: #FE669A;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #03346E, #FE669A);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #03346E, #FE669A);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        }
+
+        #sidebar {
+            width: 250px;
+            height: 110vh;
+            background: #fff;
+            /* background: rgba(255, 255, 255, 0.1); */
+            /* Slightly transparent background */
+            padding-top: 20px;
+            position: fixed;
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(10px);
+            /* Apply blur effect */
+            border-radius: 10px;
+            /* Optional: Rounded corners */
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            /* Optional: Light border for better separation */
+        }
+
+        #sidebar.hidden {
+            transform: translateX(-100%);
+        }
+
+        #sidebar .nav-link.active {
+            background-color: #03346E;
+            color: white;
+        }
+
+        #logo {
+            position: relative;
+            top: 30px;
+            width: 190px;
+            height: auto;
+            display: block;
+            margin: 0 auto 25px;
+        }
+
+        #sidebar-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            /* Inside the sidebar when open */
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.6);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 15px;
+            /* Adjust font size of the icon */
+        }
+
+        #menu-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            /* Outside the sidebar when hidden */
+            z-index: 1000;
+            background: #03346E;
+            color: white;
+            border: none;
+            border-radius: 30%;
+            padding: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 15px;
+            /* Adjust font size of the icon */
+            display: none;
+            /* Hidden by default */
+        }
+
+        #content {
+            margin-left: 250px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        #content.shifted {
+            margin-left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div id="sidebar" class="d-flex flex-column p-3">
+        <button id="sidebar-toggle">
+            <i class="fa-solid fa-chevron-left" style="color: #03346E;"></i> <!-- Icon to close the sidebar -->
+        </button>
+        <img src="../login/css/logo.svg" id="logo" alt="Logo">
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="#quizzes" class="nav-link active" id="quizzes-link">Quizzes</a>
+            </li>
+            <li>
+                <a href="#files" class="nav-link" id="files-link">Files & Materials</a>
+            </li>
+            <li>
+                <a href="#videos" class="nav-link" id="videos-link">Videos</a>
+            </li>
+            <li>
+                <a href="#assignments" class="nav-link" id="assignments-link">Assignments</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Menu Toggle Button -->
+    <button id="menu-toggle">
+        <i class="fa-solid fa-bars"></i> <!-- Icon to open the sidebar -->
+    </button>
+
+    <!-- Main Content -->
+    <div id="content" class="flex-grow-1">
+        <div id="content-inner">
+            <h2 id="quizzes">Welcome to Quizzes</h2>
+            <p>This is the content for Quizzes.</p>
+
+            <h2 id="files" class="d-none">Welcome to Files & Materials</h2>
+            <p class="d-none">This is the content for Files & Materials.</p>
+
+            <h2 id="videos" class="d-none">Welcome to Videos</h2>
+            <p class="d-none">This is the content for Videos.</p>
+
+            <h2 id="assignments" class="d-none">Welcome to Assignments</h2>
+            <p class="d-none">This is the content for Assignments.</p>
+        </div>
+    </div>
+
+    <script>
+        // Sidebar toggle functionality
+        const sidebar = document.getElementById('sidebar');
+        const content = document.getElementById('content');
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const menuToggle = document.getElementById('menu-toggle');
+
+        sidebarToggle.addEventListener('click', function () {
+            sidebar.classList.toggle('hidden');
+            content.classList.toggle('shifted');
+            menuToggle.style.display = 'block'; // Show the menu toggle button when sidebar is hidden
+        });
+
+        menuToggle.addEventListener('click', function () {
+            sidebar.classList.remove('hidden');
+            content.classList.remove('shifted');
+            menuToggle.style.display = 'none'; // Hide the menu toggle button when sidebar is visible
+        });
+
+        document.querySelectorAll('#sidebar .nav-link').forEach(link => {
+            link.addEventListener('click', function () {
+                // Remove 'active' class from all links
+                document.querySelectorAll('#sidebar .nav-link').forEach(link => link.classList.remove('active'));
+
+                // Hide all content sections
+                document.querySelectorAll('#content h2, #content p').forEach(section => section.classList.add('d-none'));
+
+                // Add 'active' class to the clicked link
+                this.classList.add('active');
+
+                // Show the selected content section
+                const sectionId = this.getAttribute('href').substring(1);
+                document.getElementById(sectionId).classList.remove('d-none');
+                document.getElementById(sectionId).nextElementSibling.classList.remove('d-none');
+            });
+        });
+    </script>
+</body>
+
+</html>
